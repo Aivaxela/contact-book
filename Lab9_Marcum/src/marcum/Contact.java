@@ -1,11 +1,11 @@
-// Project:             Lab8
+// Project:             Lab9
 // Class:               ITCS1820 Java Programming I
-// Date:                3/5/2025
+// Date:                3/21/2025
 // Author:              Marcum
 // Description:         Comparable Interface
 package marcum;
 
-public class Contact implements Comparable<Contact> {
+public abstract class Contact implements Comparable<Contact> {
 
     private String name;
     private String email;
@@ -47,7 +47,7 @@ public class Contact implements Comparable<Contact> {
                 + address.toString() + ", " + type;
     }
 
-    public int getCount() {
+    public static int getCount() {
         return numberOfContacts;
     }
 
