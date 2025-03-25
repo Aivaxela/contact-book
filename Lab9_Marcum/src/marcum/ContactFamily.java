@@ -1,3 +1,8 @@
+// Project:             Lab9
+// Class:               ITCS1820 Java Programming I
+// Date:                3/21/2025
+// Author:              Marcum
+// Description:         Family subclass of Contact
 package marcum;
 
 public class ContactFamily extends Contact {
