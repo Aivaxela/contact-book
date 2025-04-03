@@ -50,6 +50,10 @@ public abstract class Contact implements Comparable<Contact> {
     public static int getCount() {
         return numberOfContacts;
     }
+    
+    public static void decrementCount() {
+        --numberOfContacts;
+    }
 
     public String getInfo() {
         return String.join(", ", this.name, this.email, this.phone, this.address.getAddress());
