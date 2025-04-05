@@ -46,6 +46,10 @@ public abstract class Contact implements Comparable<Contact> {
         return this.name + ", " + this.phone + ", " + this.email + ", "
                 + this.address.toString() + ", " + this.type;
     }
+    
+    public String toFile() {
+        return name + "," + phone + "," + email + "," + address.toFile() + "," + type;
+    }
 
     public static int getCount() {
         return numberOfContacts;
@@ -104,7 +108,7 @@ public abstract class Contact implements Comparable<Contact> {
             this.state = validateState(state);
             this.zip = validateZip(zip);
         }
-
+        
         private String validateStreet(String string) {
             return string.length() > 10 ? string.substring(0, 10) : string;
         }
@@ -130,6 +134,10 @@ public abstract class Contact implements Comparable<Contact> {
         @Override
         public String toString() {
             return this.street + ", " + this.city + ", " + this.state + ", " + this.zip;
+        }
+        
+        public String toFile() {
+            return this.street + "," + this.city + "," + this.state + "," + this.zip;
         }
 
         public String getAddress() {

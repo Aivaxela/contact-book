@@ -26,4 +26,9 @@ public class ContactBusiness extends Contact {
     public String toString() {
         return super.toString() + ", " + company;
     }
+    
+    @Override
+    public String toFile() {
+        return super.toString() + "," + company;
+    }
 }

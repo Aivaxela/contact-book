@@ -26,4 +26,9 @@ public class ContactFamily extends Contact {
     public String toString() {
         return super.toString() + ", " + relationship;
     }
+    
+    @Override
+    public String toFile() {
+        return super.toString() + "," + relationship;
+    }
 }
