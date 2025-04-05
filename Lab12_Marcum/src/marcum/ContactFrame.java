@@ -5,9 +5,13 @@
 // Description:         Comparable Interface
 package marcum;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import javax.swing.DefaultListModel;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 public class ContactFrame extends javax.swing.JFrame {
@@ -303,7 +307,7 @@ public class ContactFrame extends javax.swing.JFrame {
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         String strSelected = lstContacts.getSelectedValue();
         
-        if(strSelected == null) {
+        if (strSelected == null) {
             JOptionPane.showMessageDialog(this, "Nothing Selected", "Deletion Error!", JOptionPane.ERROR_MESSAGE);
             return;
         }
@@ -316,13 +320,26 @@ public class ContactFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        // TODO add your handling code here:
+        try {
+            String userDir = System.getProperty("user.home");
+            JFileChooser fc = new JFileChooser(userDir + "/Desktop");
+            fc.showSaveDialog(this);
+            File file = fc.getSelectedFile();
+            try (BufferedWriter myWriter = new BufferedWriter(new FileWriter(file))) {
+                for (Contact contact : contactArrayList) {
+                    myWriter.write(contact.toFile() + System.getProperty("line.separator"));
+                }
+            }
+        } catch (IOException e) {
+            System.out.println(e);
+            JOptionPane.showMessageDialog(null, e.getMessage(), "File Write Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnLoadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnLoadActionPerformed
-
+    
     private void cbxContactTypeActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_cbxContactTypeActionPerformed
         switch (cbxContactType.getSelectedIndex()) {
             case 0:
@@ -363,7 +380,7 @@ public class ContactFrame extends javax.swing.JFrame {
         String state = txtState.getText();
         String zip = txtZip.getText();
         String dependentInfo = txtDependentInfo.getText();
-
+        
         try {
             switch (cbxContactType.getSelectedIndex()) {
                 case 0:
@@ -403,7 +420,7 @@ public class ContactFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, e.getMessage(), "Contact Creation Error",
                     JOptionPane.ERROR_MESSAGE);
         }
-
+        
     }// GEN-LAST:event_btnAddActionPerformed
 
     /**
