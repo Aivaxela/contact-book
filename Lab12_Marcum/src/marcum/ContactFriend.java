@@ -26,9 +26,9 @@ public class ContactFriend extends Contact {
     public String toString() {
         return super.toString() + ", " + yearMet;
     }
-    
+
     @Override
     public String toFile() {
-        return super.toString() + "," + yearMet;
+        return super.toFile() + "," + yearMet;
     }
 }
